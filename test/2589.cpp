@@ -31,27 +31,27 @@ void BFS(int y, int x)
 
 			v[ny][nx] = v[y][x] + 1;
 			q.push({ ny, nx });
+
 			d = max(d, v[ny][nx]);
 		}
-
 	}
 }
 
 int main()
 {
-	cin >> w >> h;
+	cin >> h >> w;
 
-	for (int i = 0; i < w; i++)
+	for (int i = 0; i < h; i++)
 	{
-		for (int j = 0; j < h; j++)
+		for (int j = 0; j < w; j++)
 		{
 			cin >> m[i][j];
 		}
 	}
 
-	for (int i = 0; i < w; i++)
+	for (int i = 0; i < h; i++)
 	{
-		for (int j = 0; j < h; j++)
+		for (int j = 0; j < w; j++)
 		{
 			if (m[i][j] == 'L')
 				BFS(i, j);
