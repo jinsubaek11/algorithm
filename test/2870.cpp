@@ -8,6 +8,26 @@ string str, numStr;
 
 vector<string> vs;
 
+void go()
+{
+	if (numStr.size())
+	{
+		while (true)
+		{
+			if (numStr.size() && numStr.front() == '0')
+				numStr.erase(numStr.begin());
+			else
+				break;
+		}
+
+		if (numStr.size() == 0)
+			numStr = "0";
+
+		vs.push_back(numStr);
+		numStr = "";
+	}
+}
+
 bool cmp(string a, string b)
 {
 	if (a.size() == b.size()) return a < b;
@@ -27,43 +47,13 @@ int main()
 			if (str[j] < 58)
 			{
 				numStr += str[j];
-
-				if (j == str.size() - 1)
-				{	
-					vs.push_back(numStr);
-				}
-
-				if (numStr.front() == '0')
-				{
-					numStr.erase(numStr.begin());
-				}
 			}
 			else 
 			{
-				if (numStr.size())
-				{
-					while (true)
-					{
-						if (numStr.front() == '0')
-						{
-							numStr.erase(numStr.begin());
-						}
-						else
-						{
-							break;
-						}
-					}
-					if (numStr.size() == 0)
-					{
-						numStr = "0";
-					}
-
-					vs.push_back(numStr);
-				}
-				numStr = "";
-				continue;
+				go();
 			}
 		}
+		go();
 	}
 
 	sort(vs.begin(), vs.end(), cmp);
